@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body>
+    <div class="progress-bar">
+        <div class="progress"></div>
+    </div>
+    <form id="market-evaluation-form">
+        <!-- Question 1 and Slider -->
+        <div class="question">
+            <label for="urgency">1. Urgency:</label>
+            <input type="range" id="urgency" name="urgency" min="0" max="10" value="5">
+            <span id="urgency-value">5</span>
+        </div>
+        <!-- Repeat similar structure for other questions 2 to 10 -->
+
+        <!-- Final Score Display -->
+        <div class="final-score">
+            <p>Your Market Idea Score: <span id="score">0</span></p>
+        </div>
+    </form>
+    <div class="result">
+        <p id="result-message">Your idea's potential:</p>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
