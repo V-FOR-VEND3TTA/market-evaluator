@@ -10,74 +10,81 @@
     <h1>Evaluate Your Idea</h1>
     <form id="market-evaluation-form">
         <!-- Question 1 and Slider -->
-        <div class="question">
+        <div class="question" data-step=1>
             <label for="urgency">1. Urgency:</label>
             <p><i>How badly do people need this right now?<i></p>
             <input type="range" id="urgency" name="urgency" min="0" max="10" value="0">
             <span id="urgency-value"></span>
         </div>
-        <div class="question">
+        <div class="question" data-step=2>
             <label for="market-size">2. Market Size</label>
             <p><i>How many people are already purchasing things like this?</i></p>
             <input type="range" id="market-size" name="market-size" min="0" max="10" value="0">
             <span id="marker-size-value"></span>
         </div>
 
-        <div class="question">
+        <div class="question" data-step=3>
             <label for="pricing-potential">3. Pricing Potential</label>
             <p><i>What is the highest price that a typical buyer would pay for this solution?</i></p>
             <input type="range" id="pricing-potential" name="pricing-potential" min="0" max="10" value="0">
             <span id="marker-size-value"></span>
         </div>
 
-        <div class="question">
+        <div class="question" data-step=4>
             <label for="cac">4. Cost of Customer Acquisition</label>
             <p><i>How much will it cost to get a sale in both money and effort?</i></p>
             <input type="range" id="cac" name="cac" min="0" max="10" value="0">
             <span id="marker-size-value"></span>
         </div>
 
-        <div class="question">
+        <div class="question" data-step=5>
             <label for="cost-of-value-delivery">5. Cost of Value Delivery</label>
             <p><i>How much will it cost to deliver your offer? In both money and effort</i></p> 
             <input type="range" id="cost-of-value-delivery" name="cost-of-value-delivery" min="0" max="10" value="0">
             <span id="marker-size-value"></span>
         </div>
 
-        <div class="question">
+        <div class="question" data-step=6>
             <label for="uniquenes">6. Uniqueness of Offer</label>
             <p><i>How one of a kind is what you are offering and how easy is it to copy you ?</i></p>
             <input type="range" id="uniquenes" name="uniquenes" min="0" max="10" value="0">
             <span id="marker-size-value"></span>
         </div>
 
-        <div class="question">
+        <div class="question" data-step=7>
             <label for="speed-to-market">7. Speed to Market</label>
             <p><i>How soon can you create something to sell?</i></p>
             <input type="range" id="speed-to-market" name="speed-to-market" min="0" max="10" value="0">
             <span id="marker-size-value"></span>
         </div>
 
-        <div class="question">
+        <div class="question" data-step=8>
             <label for="upfront-investment">8. Up-front Investment</label>
             <p><i>How much will you have to invest before you are ready to sell?</i></p>
             <input type="range" id="upfront-investment" name="upfront-investment" min="0" max="10" value="0">
             <span id="marker-size-value"></span>
         </div>
 
-        <div class="question">
+        <div class="question" data-step=9>
             <label for="upsell-potential">9. Upsell Potential</label>
             <p><i>Are there related secondary offers that could go well with the initial purchases?</i></p>
             <input type="range" id="upsell-potential" name="upsell-potential" min="0" max="10" value="0">
             <span id="marker-size-value"></span>
         </div>
 
-        <div class="question">
+        <div class="question" data-step=10>
             <label for="evergreen-potential">10. Evergreen Potential</label>
             <p><i>Once the product has been created, how much additional work do you have to put in, in order to continue selling?</i></p>
             <input type="range" id="evergreen-potential" name="evergreen-potential" min="0" max="10" value="0">
             <span id="marker-size-value"></span>
         </div>
+
+         <!-- Navigation buttons -->
+        <div class="buttons">
+            <button type="button" id="prev-button" onclick="prevStep()">Previous</button>
+            <button type="button" id="next-button" onclick="nextStep()">Next</button>
+        </div>
+
         <!-- Final Score Display -->
         <div class="final-score">
             <p>Your Market Idea Score: <span id="score">0</span></p>

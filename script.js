@@ -3,6 +3,9 @@ const progressBar = document.querySelector('.progress');
 const scoreDisplay = document.getElementById('score');
 const resultMessage = document.getElementById('result-message');
 
+let currentStep = 1;
+const maxSteps = 10; // Assuming there are 10 questions
+
 // Function to update the progress bar and score
 function updateProgressBarAndScore() {
     const sliders = form.querySelectorAll('input[type="range"]');
@@ -17,22 +20,58 @@ function updateProgressBarAndScore() {
 
     progressBar.style.width = percentage + '%';
     scoreDisplay.textContent = totalScore;
+}
 
-    // Determine the result message based on the score
-    if (totalScore <= 50) {
-        resultMessage.textContent = "Move on to another idea. There are better places to invest your energy.";
-    } else if (totalScore > 50 && totalScore < 75) {
-        resultMessage.textContent = "The idea is promising but will need a huge investment of energy and resources.";
+// Function to show the current step and hide others
+function showStep(step) {
+    const questions = form.querySelectorAll('.question');
+    questions.forEach(question => {
+        const stepNumber = parseInt(question.getAttribute('data-step'));
+        if (stepNumber === step) {
+            question.style.display = 'block';
+        } else {
+            question.style.display = 'none';
+        }
+    });
+
+    // Update progress bar and score
+    updateProgressBarAndScore();
+
+    // Hide/show navigation buttons based on the step
+    const prevButton = document.getElementById('prev-button');
+    const nextButton = document.getElementById('next-button');
+
+    if (step === 1) {
+        prevButton.style.display = 'none';
     } else {
-        resultMessage.textContent = "You have a promising idea! Full speed ahead!";
+        prevButton.style.display = 'inline-block';
+    }
+
+    if (step === maxSteps) {
+        nextButton.style.display = 'none';
+        document.querySelector('.final-score').style.display = 'block'; // Show the final score
+        updateProgressBarAndScore(); // Ensure the final score is up-to-date
+    } else {
+        nextButton.style.display = 'inline-block';
+        document.querySelector('.final-score').style.display = 'none'; // Hide the final score
     }
 }
 
-// Add event listeners to update the progress bar and score when sliders change
-const sliders = form.querySelectorAll('input[type="range"]');
-sliders.forEach(slider => {
-    slider.addEventListener('input', updateProgressBarAndScore);
-});
+// Function to go to the next step
+function nextStep() {
+    if (currentStep < maxSteps) {
+        currentStep++;
+        showStep(currentStep);
+    }
+}
 
-// Call the function initially to set the initial values
-updateProgressBarAndScore();
+// Function to go to the previous step
+function prevStep() {
+    if (currentStep > 1) {
+        currentStep--;
+        showStep(currentStep);
+    }
+}
+
+// Initialize the form by showing the first step
+showStep(currentStep);
